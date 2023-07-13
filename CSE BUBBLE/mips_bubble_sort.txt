@@ -1,0 +1,25 @@
+memory[0-10] = array
+register 0 = 0
+register 1 = 11	//n
+
+main:
+	
+1	addi $2,$0,0		#i = 0 ->$2
+2 	beq $2,$1,13 	#while(i<n)
+
+3	addi $3,$0,0		#j=i+1 ->$3
+4	beq $3,$1,8		#while(j<n)
+
+4	sw $4,0($2)		#reg4 = memory[i]
+5	sw $5.0($3)		#reg5 = memory[j]
+
+6	ble $4,$5,11		#if memory[i]<memory[j] then jump to line 9
+7	lw $5,0($2)		#memory[i] = rej5
+8	lw $4,0($3)		#memory[j] = rej4		--->swap statements
+9	addi $3,$3,1		#j=j+1
+10	j 6			#jump to 6th line
+
+11	addi $2,$2,1		#i=i+1
+12	j 2			#jump to second line
+
+13 	mze karo
